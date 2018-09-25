@@ -25,7 +25,7 @@ public class ClockDisplay
      */
     public ClockDisplay()
     {
-        hours = new NumberDisplay(12);
+        hours = new NumberDisplay(13);
         minutes = new NumberDisplay(60);
         isPM = false;
         updateDisplay();
@@ -56,10 +56,14 @@ public class ClockDisplay
     public void timeTick()
     {
         minutes.increment();
-        if(minutes.getValue() == 0) {  // it just rolled over!
+        if(minutes.getValue() == 0)
+        {  // it just rolled over!
             hours.increment();
+            
          if(hours.getValue() == 12)
          toggle();
+         if(hours.getValue() == 0)
+            hours.increment();
         }
         updateDisplay();
     }
