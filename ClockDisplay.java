@@ -25,7 +25,7 @@ public class ClockDisplay
      */
     public ClockDisplay()
     {
-        hours = new NumberDisplay(13);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         isPM = false;
         updateDisplay();
@@ -62,8 +62,7 @@ public class ClockDisplay
             
          if(hours.getValue() == 12)
          toggle();
-         if(hours.getValue() == 0)
-            hours.increment();
+      
         }
         updateDisplay();
     }
@@ -93,15 +92,30 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
+       
       if(isPM)
       {
-        displayString = hours.getDisplayValue() + ":" +
+        if(hours.getValue()==0)
+        {
+            displayString = "1:" + minutes.getDisplayValue() + " PM";
+        }
+        else 
+        {
+            displayString = hours.getDisplayValue() + ":" +
                         minutes.getDisplayValue() + " PM";
+        }
       }
       else
       {
-         displayString = hours.getDisplayValue() + ":" +
+        if(hours.getValue()==0)
+        {
+            displayString = "12:" + minutes.getDisplayValue() + " AM";
+        }
+        else 
+        {
+            displayString = hours.getDisplayValue() + ":" +
                          minutes.getDisplayValue() + " AM";
+        }
       }
     }
 }
