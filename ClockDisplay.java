@@ -1,6 +1,6 @@
 
 /**
- * The ClockDisplay class implements a digital clock display 12 hour clock. 
+ * The ClockDisplay class implements a digital clock display 12 hour clock.
  * The clock shows hours and minutes.
  * The range of the clock is 00:00 (midnight) to 12:59 (one minute before
  * 1PM).
@@ -25,7 +25,7 @@ public class ClockDisplay
      */
     public ClockDisplay()
     {
-        hours = new NumberDisplay(13);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         isPM = false;
         updateDisplay();
@@ -38,7 +38,7 @@ public class ClockDisplay
      */
     public ClockDisplay(int hour, int minute, boolean isPM)
     {
-        hours = new NumberDisplay(13);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         this.isPM = isPM;
         setTime(hour, minute, isPM);
@@ -59,10 +59,10 @@ public class ClockDisplay
         if(minutes.getValue() == 0)
         {  // it just rolled over!
             hours.increment();
-            
+
          if(hours.getValue() == 12)
          toggle();
-      
+
         }
         updateDisplay();
     }
@@ -92,14 +92,14 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
-       
+
       if(isPM)
       {
         if(hours.getValue()==0)
         {
             displayString = "1:" + minutes.getDisplayValue() + " PM";
         }
-        else 
+        else
         {
             displayString = hours.getDisplayValue() + ":" +
                         minutes.getDisplayValue() + " PM";
@@ -111,7 +111,7 @@ public class ClockDisplay
         {
             displayString = "12:" + minutes.getDisplayValue() + " AM";
         }
-        else 
+        else
         {
             displayString = hours.getDisplayValue() + ":" +
                          minutes.getDisplayValue() + " AM";
